@@ -1,7 +1,9 @@
 package emi.emifilmsbackend;
 
 import emi.emifilmsbackend.model.Comment;
+import emi.emifilmsbackend.model.FavoriteMovie;
 import emi.emifilmsbackend.repository.CommentRepository;
+import emi.emifilmsbackend.repository.FavoriteRespository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -19,6 +21,8 @@ import java.util.Arrays;
 public class EmifilmsbackendApplication implements CommandLineRunner {
 	@Autowired
 	private CommentRepository commentRepository;
+	@Autowired
+	private FavoriteRespository favoriteRespository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(EmifilmsbackendApplication.class, args);
@@ -33,6 +37,8 @@ public class EmifilmsbackendApplication implements CommandLineRunner {
 		commentRepository.save(new Comment(null, 115L, "Anwar Adil", "I like this movie"));
 
 		System.out.println(commentRepository.findByMovieId(848326L));
+		favoriteRespository.save(new FavoriteMovie(null,848326L,"soufiane"));
+		favoriteRespository.save(new FavoriteMovie(null,572802L,"soufiane"));
 	}
 
 	@Bean

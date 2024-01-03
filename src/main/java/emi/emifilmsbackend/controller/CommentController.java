@@ -22,7 +22,7 @@ public class CommentController {
         return commentRepository.findByMovieId(movieId);
     }
 
-    @PostMapping("/comments")
+    @PostMapping("/comments/add")
     public Comment createComment(@RequestBody Comment comment) {
         return commentRepository.save(comment);
     }
